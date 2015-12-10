@@ -1,11 +1,11 @@
 {
-  "name": "clips",
+  "name": "language-clips",
   "version": "0.1.0",
   "description": "Syntax and snippets for CLIPS, a tool for building Expert Systems",
   "keywords": [
-    "CLIPS"
-    "Grammar"
-    "Syntax"
+    "CLIPS",
+    "Grammar",
+    "Syntax",
     "Language"
   ],
   "repository": "https://github.com/Chosko/language-clips",
