@@ -1,5 +1,5 @@
-# CLIPS package
+# language-clips
 
-CLIPS syntax highlighting for atom.
+Syntax and snippets for CLIPS, a tool for building Expert Systems
 
-<!-- ![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif) -->
+<!-- ![A screenshot of language-clips](screenshot.png) -->
