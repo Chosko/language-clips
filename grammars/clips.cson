@@ -260,6 +260,9 @@ repository:
   common:
     patterns: [
       {
+        include: '#emptyBraces'
+      }
+      {
         include: '#illegalBraces'
       }
       {
@@ -279,6 +282,12 @@ repository:
         match: '\\b(TRUE|FALSE)\\b'
         name: 'constant.numeric.clips'
       }
+    ]
+  emptyBraces:
+    patterns: [
+      comment: 'empty braces'
+      match: '\\([\\s\\t]*\\)'
+      name: 'variable.language.clips'
     ]
   illegalBraces:
     patterns: [
@@ -404,6 +413,9 @@ repository:
           '1':
             name: 'variable.language.clips'
         patterns: [
+          {
+            include: '#conditionalElements'
+          }
           {
             include: '#facts'
           }
