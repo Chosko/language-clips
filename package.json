@@ -5,9 +5,6 @@
   "description": "A short description of your package",
   "keywords": [
   ],
-  "activationCommands": {
-    "atom-workspace": "clips:toggle"
-  },
   "repository": "https://github.com/atom/clips",
   "license": "MIT",
   "engines": {
