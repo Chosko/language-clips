@@ -2,6 +2,9 @@
   defrule:
     prefix: 'defrule'
     body: 'defrule ${1:name}\n\t($2)\n\t=>\n\t\n'
+  defrule:
+    prefix: 'deffunction'
+    body: 'deffunction ${1:name}(?${2:param1})\n\t($3)\n'
   defmodule:
     prefix: 'defmodule'
     body: 'defmodule ${1:name} (import ${2:module} ${3:?ALL}) (export ${4:?ALL})'
