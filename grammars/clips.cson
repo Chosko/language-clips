@@ -141,9 +141,35 @@ patterns: [
         include: '#functions'
       }
       {
-        comment: 'function variable arrow <- '
-        match: '<-'
-        name: 'variable.language.clips'
+        include: '#facts'
+      }
+      {
+        include: '#common'
+      }
+    ]
+  }
+
+  # Deffunction construct
+  {
+    comment: 'deffunction construct'
+    begin: '(\\()[\\s\\t]*(deffunction)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
+    beginCaptures:
+      '1':
+        name: 'entity.name.class.clips'
+      '2':
+        name: 'entity.name.class.clips'
+      '3':
+        name: 'punctuation.definition.string.begin.clips'
+    end: '(\\))'
+    endCaptures:
+      '1':
+        name: 'entity.name.class.clips'
+    patterns: [
+      {
+        include: '#actions'
+      }
+      {
+        include: '#functions'
       }
       {
         include: '#facts'
@@ -323,6 +349,9 @@ repository:
         include: '#functions'
       }
       {
+        include: '#facts'
+      }
+      {
         include: '#variables'
       }
       {
@@ -348,14 +377,14 @@ repository:
   functions:
     patterns: [
       {
-        begin: '(=|&:)?(\\()([+\\-*/<>]|test)'
+        begin: '(=|&:)?(\\()([+\\-*/<>=]+)'
         beginCaptures:
           '1':
             name: 'storage.function.clips'
           '2':
             name: 'storage.function.clips'
           '3':
-            name: 'storage.fucntion.clips'
+            name: 'storage.function.clips'
         end: '(\\))'
         endCaptures:
           '1':
@@ -365,6 +394,69 @@ repository:
             include: '#expressions'
           }
         ]
+      }
+      {
+        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-facts|fact\\-slot\\-value|abs|length\\$|eq|neq)'
+        beginCaptures:
+          '1':
+            name: 'support.function.clips'
+          '2':
+            name: 'support.function.clips'
+          '3':
+            name: 'support.function.clips'
+        end: '(\\))'
+        endCaptures:
+          '1':
+            name: 'support.function.clips'
+        patterns: [
+          {
+            include: '#expressions'
+          }
+        ]
+      }
+      {
+        begin: '(=|&:)?(\\()(test|bind|do\\-for\\-all\\-facts|if|printout|and|or)'
+        beginCaptures:
+          '1':
+            name: 'variable.language.clips'
+          '2':
+            name: 'variable.language.clips'
+          '3':
+            name: 'variable.language.clips'
+        end: '(\\))'
+        endCaptures:
+          '1':
+            name: 'variable.language.clips'
+        patterns: [
+          {
+            include: '#expressions'
+          }
+        ]
+      }
+      {
+        begin: '(=|&:)?(\\()(return)'
+        beginCaptures:
+          '1':
+            name: 'punctuation.definition.string.begin.clips'
+          '2':
+            name: 'punctuation.definition.string.begin.clips'
+          '3':
+            name: 'punctuation.definition.string.begin.clips'
+        end: '(\\))'
+        endCaptures:
+          '1':
+            name: 'punctuation.definition.string.begin.clips'
+        patterns: [
+          {
+            include: '#expressions'
+          }
+        ]
+      }
+      {
+        include: '#conditionalElements'
+      }
+      {
+        include: '#actions'
       }
     ]
   facts:
