@@ -138,15 +138,15 @@ patterns: [
         include: '#actions'
       }
       {
+        include: '#functions'
+      }
+      {
         comment: 'function variable arrow <- '
         match: '<-'
         name: 'variable.language.clips'
       }
       {
         include: '#facts'
-      }
-      {
-        include: '#variables'
       }
       {
         include: '#common'
@@ -309,7 +309,7 @@ repository:
   variables:
     patterns: [
       {
-        match: '(^\\?|\\s\\?)([a-zA-Z_][\\w$\\-]*)'
+        match: '(^\\?|\\s\\?|(?<=\\()\\?)([a-zA-Z_][\\w$\\-]*)'
         captures:
           '1':
             name: 'variable.language.clips'
@@ -320,7 +320,35 @@ repository:
   expressions:
     patterns: [
       {
-        begin: '(=|&:)?(\\()([+\\-*/\\w$\\-<>]+)'
+        include: '#functions'
+      }
+      {
+        include: '#variables'
+      }
+      {
+        include: '#numbers'
+      }
+      {
+        include: '#booleans'
+      }
+      {
+        include: '#symbols'
+      }
+      {
+        include: '#common'
+      }
+    ]
+  symbols:
+    patterns: [
+      {
+        match: '[&|]'
+        name: 'storage.function.clips'
+      }
+    ]
+  functions:
+    patterns: [
+      {
+        begin: '(=|&:)?(\\()([+\\-*/<>]|test)'
         beginCaptures:
           '1':
             name: 'storage.function.clips'
@@ -338,33 +366,28 @@ repository:
           }
         ]
       }
-      {
-        include: '#variables'
-      }
-      {
-        include: '#numbers'
-      }
-      {
-        include: '#booleans'
-      }
-      {
-        include: '#common'
-      }
     ]
   facts:
     patterns: [
       {
-        begin: '(\\()[\\s\\t]*([a-zA-Z_][\\w$\\-]*)'
+        begin: '(?:(^\\?|\\s\\?)([a-zA-Z_][\\w$\\-]*)[\\s\\t]*(<-)[\\s\\t]*)?(\\()'
         beginCaptures:
           '1':
-            name: 'punctuation.definition.string.begin.clips'
+            name: 'variable.language.clips'
           '2':
-            name: 'variable.parameter.clips'
+            name: 'constant.numeric.clips'
+          '3':
+            name: 'variable.language.clips'
+          '4':
+            name: 'punctuation.definition.string.begin.clips'
         end: '(\\))'
         endCaptures:
           '1':
             name: 'punctuation.definition.string.begin.clips'
         patterns: [
+          {
+            include: '#functions'
+          }
           {
             comment: 'ordered fact inner'
             begin: '(\\()'
@@ -379,22 +402,10 @@ repository:
               {
                 include: '#expressions'
               }
-              {
-                include: '#numbers'
-              }
-              {
-                include: '#common'
-              }
             ]
           }
           {
             include: '#expressions'
-          }
-          {
-            include: '#numbers'
-          }
-          {
-            include: '#common'
           }
         ]
       }
@@ -417,6 +428,9 @@ repository:
             include: '#conditionalElements'
           }
           {
+            include: '#functions'
+          }
+          {
             include: '#facts'
           }
           {
@@ -431,13 +445,13 @@ repository:
         begin: '(\\()[\\s\\t]*(assert|retract|modify)'
         beginCaptures:
           '1':
-            name: 'storage.function.clips'
+            name: 'storage.functions.clips'
           '2':
-            name: 'storage.function.clips'
+            name: 'storage.functions.clips'
         end: '(\\))'
         endCaptures:
           '1':
-            name: 'storage.function.clips'
+            name: 'storage.functions.clips'
         patterns: [
           {
             include: '#facts'
