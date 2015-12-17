@@ -2,7 +2,7 @@
   defrule:
     prefix: 'defrule'
     body: 'defrule ${1:name}\n\t($2)\n\t=>\n\t\n'
-  defrule:
+  deffunction:
     prefix: 'deffunction'
     body: 'deffunction ${1:name}(?${2:param1})\n\t($3)\n'
   defmodule:
