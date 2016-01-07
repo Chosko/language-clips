@@ -12,15 +12,15 @@ patterns: [
     begin: '(\\()[\\s\\t]*(deftemplate)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
     beginCaptures:
       '1':
-        name: 'entity.name.class.clips'
-      '2':
-        name: 'entity.name.class.clips'
-      '3':
         name: 'punctuation.definition.string.begin.clips'
+      '2':
+        name: 'punctuation.definition.string.begin.clips'
+      '3':
+        name: 'entity.name.class.clips'
     end: '(\\))'
     endCaptures:
       '1':
-        name: 'entity.name.class.clips'
+        name: 'punctuation.definition.string.begin.clips'
     patterns: [
       # Slot
       {
@@ -32,7 +32,7 @@ patterns: [
           '2':
             name: 'storage.function.clips'
           '3':
-            name: 'variable.parameter.clips'
+            name: 'entity.name.variable.clips'
         end: '(\\))'
         endCaptures:
           '1':
@@ -75,15 +75,15 @@ patterns: [
     begin: '(\\()[\\s\\t]*(defrule)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
     beginCaptures:
       '1':
-        name: 'entity.name.class.clips'
-      '2':
-        name: 'entity.name.class.clips'
-      '3':
         name: 'punctuation.definition.string.begin.clips'
+      '2':
+        name: 'punctuation.definition.string.begin.clips'
+      '3':
+        name: 'support.class.clips'
     end: '(\\))'
     endCaptures:
       '1':
-        name: 'entity.name.class.clips'
+        name: 'punctuation.definition.string.begin.clips'
     patterns: [
       # declare
       {
@@ -132,7 +132,7 @@ patterns: [
       {
         comment: 'arrow'
         match: '=>'
-        name: 'entity.name.class.clips'
+        name: 'storage.class.clips'
       }
       {
         include: '#actions'
@@ -155,15 +155,15 @@ patterns: [
     begin: '(\\()[\\s\\t]*(deffunction)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
     beginCaptures:
       '1':
-        name: 'entity.name.class.clips'
-      '2':
-        name: 'entity.name.class.clips'
-      '3':
         name: 'punctuation.definition.string.begin.clips'
+      '2':
+        name: 'punctuation.definition.string.begin.clips'
+      '3':
+        name: 'entity.name.function.clips'
     end: '(\\))'
     endCaptures:
       '1':
-        name: 'entity.name.class.clips'
+        name: 'punctuation.definition.string.begin.clips'
     patterns: [
       {
         include: '#actions'
@@ -186,15 +186,15 @@ patterns: [
     begin: '(\\()[\\s\\t]*(deffacts)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
     beginCaptures:
       '1':
-        name: 'entity.name.class.clips'
-      '2':
-        name: 'entity.name.class.clips'
-      '3':
         name: 'punctuation.definition.string.begin.clips'
+      '2':
+        name: 'punctuation.definition.string.begin.clips'
+      '3':
+        name: 'entity.name.class.clips'
     end: '(\\))'
     endCaptures:
       '1':
-        name: 'entity.name.class.clips'
+        name: 'punctuation.definition.string.begin.clips'
     patterns: [
       {
         include: '#orderedFacts'
@@ -214,30 +214,30 @@ patterns: [
     begin: '(\\()[\\s\\t]*(defmodule)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
     beginCaptures:
       '1':
-        name: 'entity.name.class.clips'
-      '2':
-        name: 'entity.name.class.clips'
-      '3':
         name: 'punctuation.definition.string.begin.clips'
+      '2':
+        name: 'punctuation.definition.string.begin.clips'
+      '3':
+        name: 'entity.name.class.clips'
     end: '(\\))'
     endCaptures:
       '1':
-        name: 'entity.name.class.clips'
+        name: 'punctuation.definition.string.begin.clips'
     patterns: [
       {
         comment: 'import'
         begin: '(\\()[\\s\\t]*(import)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)'
         beginCaptures:
           '1':
-            name: 'storage.function.clips'
+            name: 'support.function.clips'
           '2':
-            name: 'storage.function.clips'
+            name: 'support.function.clips'
           '3':
             name: 'variable.parameter.clips'
         end: '(\\))'
         endCaptures:
           '1':
-            name: 'storage.function.clips'
+            name: 'support.function.clips'
         patterns: [
           {
             include: '#expressions'
@@ -252,13 +252,13 @@ patterns: [
         begin: '(\\()[\\s\\t]*(export)\\b'
         beginCaptures:
           '1':
-            name: 'storage.function.clips'
+            name: 'support.function.clips'
           '2':
-            name: 'storage.function.clips'
+            name: 'support.function.clips'
         end: '(\\))'
         endCaptures:
           '1':
-            name: 'storage.function.clips'
+            name: 'support.function.clips'
         patterns: [
           {
             include: '#expressions'
@@ -396,7 +396,7 @@ repository:
         ]
       }
       {
-        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-facts|fact\\-slot\\-value|abs|length\\$|eq|neq)'
+        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-facts|find\\-fact|fact\\-slot\\-value|abs|length\\$|nth\\$|eq|neq)'
         beginCaptures:
           '1':
             name: 'support.function.clips'
@@ -415,18 +415,18 @@ repository:
         ]
       }
       {
-        begin: '(=|&:)?(\\()(test|bind|do\\-for\\-all\\-facts|if|printout|and|or)'
+        begin: '(=|&:)?(\\()(test|bind|do\\-for\\-all\\-facts|do\\-for\\-fact|if|while|printout|and|or)'
         beginCaptures:
           '1':
-            name: 'variable.language.clips'
+            name: 'entity.name.variable.language.clips'
           '2':
-            name: 'variable.language.clips'
+            name: 'entity.name.variable.language.clips'
           '3':
-            name: 'variable.language.clips'
+            name: 'entity.name.variable.language.clips'
         end: '(\\))'
         endCaptures:
           '1':
-            name: 'variable.language.clips'
+            name: 'entity.name.variable.language.clips'
         patterns: [
           {
             include: '#expressions'
@@ -437,15 +437,15 @@ repository:
         begin: '(=|&:)?(\\()(return)'
         beginCaptures:
           '1':
-            name: 'punctuation.definition.string.begin.clips'
+            name: 'storage.function.clips'
           '2':
-            name: 'punctuation.definition.string.begin.clips'
+            name: 'storage.function.clips'
           '3':
-            name: 'punctuation.definition.string.begin.clips'
+            name: 'storage.function.clips'
         end: '(\\))'
         endCaptures:
           '1':
-            name: 'punctuation.definition.string.begin.clips'
+            name: 'storage.function.clips'
         patterns: [
           {
             include: '#expressions'
