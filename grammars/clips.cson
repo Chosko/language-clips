@@ -25,7 +25,7 @@ patterns: [
       # Slot
       {
         comment: 'single slot definition'
-        begin: '(\\()[\\s\\t]*(slot)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)'
+        begin: '(\\()[\\s\\t]*(slot|multislot)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)'
         beginCaptures:
           '1':
             name: 'storage.function.clips'
