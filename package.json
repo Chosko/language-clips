@@ -1,6 +1,6 @@
 {
   "name": "language-clips",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Syntax and snippets for CLIPS, a tool for building Expert Systems",
   "keywords": [
     "CLIPS",
