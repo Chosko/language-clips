@@ -42,7 +42,7 @@ patterns: [
           # Slot modifier
           {
             comment: 'slot modifier'
-            begin: '(\\()[\\s\\t]*(allowed\\-values|default|default\\-dynamic)\\b'
+            begin: '(\\()[\\s\\t]*(allowed\\-values|default|default\\-dynamic)(?!-)\\b'
             beginCaptures:
               '1':
                 name: 'support.function.clips'
@@ -88,7 +88,7 @@ patterns: [
       # declare
       {
         comment: 'declare modifier'
-        begin: '(\\()[\\s\\t]*(declare)\\b'
+        begin: '(\\()[\\s\\t]*(declare)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'storage.function.clips'
@@ -102,7 +102,7 @@ patterns: [
           # salience
           {
             comment: 'salience|auto-focus modifier'
-            begin: '(\\()[\\s\\t]*(salience|auto\\-focus)\\b'
+            begin: '(\\()[\\s\\t]*(salience|auto\\-focus)(?!-)\\b'
             beginCaptures:
               '1':
                 name: 'support.function.clips'
@@ -249,7 +249,7 @@ patterns: [
       }
       {
         comment: 'export'
-        begin: '(\\()[\\s\\t]*(export)\\b'
+        begin: '(\\()[\\s\\t]*(export)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'storage.function.clips'
@@ -396,7 +396,28 @@ repository:
         ]
       }
       {
-        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-facts|fact\\-slot\\-value|abs|length\\$|eq|neq)'
+        begin: '(=|&:)?(\\()(abs|log|log10|exp|round|mod|sqrt|div|min|max|float|integer|cos|sin|cot|tan+}
+{+                |sec|csc|acos|asin|acot|atan|asec|acsc|cosh|sinh|coth|tanh|sech|csch+}
+{+                |acosh|asinh|acoth|atanh|asech|acsch|grad-deg|rad-deg)(?!-)\\b'
+        beginCaptures:
+          '1':
+            name: 'storage.function.clips'
+          '2':
+            name: 'storage.function.clips'
+          '3':
+            name: 'storage.function.clips'
+        end: '(\\))'
+        endCaptures:
+          '1':
+            name: 'storage.function.clips'
+        patterns: [
+          {
+            include: '#expressions'
+          }
+        ]
+      }
+      {
+        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-facts|fact\\-slot\\-value|length|nth|eq|neq)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'support.function.clips'
@@ -415,7 +436,7 @@ repository:
         ]
       }
       {
-        begin: '(=|&:)?(\\()(test|bind|do\\-for\\-all\\-facts|if|printout|and|or)'
+        begin: '(=|&:)?(\\()(test|bind|do\\-for\\-all\\-facts|if|while|printout|and|or)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'variable.language.clips'
@@ -505,7 +526,7 @@ repository:
   conditionalElements:
     patterns: [
       {
-        begin: '(\\()[\\s\\t]*(or|not|and|exists|forall|logical)'
+        begin: '(\\()[\\s\\t]*(or|not|and|exists|forall|logical)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'variable.language.clips'
@@ -534,7 +555,7 @@ repository:
   actions:
     patterns: [
       {
-        begin: '(\\()[\\s\\t]*(assert|retract|modify)'
+        begin: '(\\()[\\s\\t]*(assert|retract|modify|focus|pop-focus)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'storage.functions.clips'
