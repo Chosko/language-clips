@@ -415,7 +415,7 @@ repository:
         ]
       }
       {
-        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-facts|fact\\-slot\\-value|length|nth|eq|neq)(?!-)\\b'
+        begin: '(=|&:)?(\\()(find\\-all\\-facts|find\\-fact|fact\\-slot\\-value|length|nth|eq|neq)(?!-)\\b'
         beginCaptures:
           '1':
             name: 'support.function.clips'
