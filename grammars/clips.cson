@@ -180,6 +180,37 @@ patterns: [
     ]
   }
 
+  # Defclass construct
+  {
+    comment: 'defclass construct'
+    begin: '(\\()[\\s\\t]*(defclass)[\\s\\t]+([a-zA-Z_][\\w$\\-]*)\\b'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.string.begin.clips'
+      '2':
+        name: 'punctuation.definition.string.begin.clips'
+      '3':
+        name: 'entity.name.function.clips'
+    end: '(\\))'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.string.begin.clips'
+    patterns: [
+      {
+        include: '#actions'
+      }
+      {
+        include: '#functions'
+      }
+      {
+        include: '#facts'
+      }
+      {
+        include: '#common'
+      }
+    ]
+  }
+
   # Deffacts construct
   {
     comment: 'deffacts construct'
