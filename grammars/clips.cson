@@ -42,7 +42,7 @@ patterns: [
           # Slot modifier
           {
             comment: 'slot modifier'
-            begin: '(\\()[\\s\\t]*(allowed\\-values|default|default\\-dynamic)(?!-)\\b'
+            begin: '(\\()[\\s\\t]*(allowed\\-values|type|allowed\\-symbols|default|default\\-dynamic)(?!-)\\b'
             beginCaptures:
               '1':
                 name: 'support.function.clips'
