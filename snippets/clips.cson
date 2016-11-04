@@ -11,6 +11,9 @@
   deffacts:
     prefix: 'deffacts'
     body: 'deffacts ${1:name}\n\t($2)\n'
+  defclass:
+    prefix: 'defclass'
+    body: 'defclass ${1:name} (is-a ${2:USER})\n\t(slot $3)\n'
   deftemplate:
     prefix: 'deftemplate'
     body: 'deftemplate ${1:name}\n\t($2)\n'
